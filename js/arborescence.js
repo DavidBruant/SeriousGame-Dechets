@@ -1,5 +1,5 @@
 (function(global){
-    "use sD.goodct";
+    "use strict";
     
     //finalités sans conséquences après
     

@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
     "use strict";
 
-    $('.dechet').draggable();
+	var gameOffset = $('.game').offset();
+
+    $('.dechet').draggable({ delay: 0 });
     $('.depots > *').droppable({
         accept: ".dechet",
         drop: function(e, ui){
@@ -12,12 +14,14 @@ document.addEventListener('DOMContentLoaded', function(){
             var typeDechet = $(dechet).attr('data-type');
             var typePoubelle = poubelle.getAttribute('data-type');
 
+			console.log(dechet.offset())
             // 'cause hmm... yeah.. CSS.. whatever...
+			
             dechet.css({ 
                 position: 'absolute',
                 top: dechet.offset().top,
-                left: dechet.offset().left,
-            })
+                left: dechet.offset().left
+            });
 
             var nextPos;
 

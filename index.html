@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
+<html lang="fr-FR">
+<head>
 
-        <style> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="author" content="ECV / IJBA" />
+	<meta name="description" content="#" />
+
+	<title>Tetritus</title>
+    
+    <style> 
             *{
                 background-repeat: no-repeat;
                 background-position: center center;
@@ -43,67 +50,173 @@
             
         </style>
 
-        <link href="main.css" rel="stylesheet">
 
 
-        <script src="bower_components/jquery/dist/jquery.js"> </script>
-        <script src="bower_components/jqueryui/ui/jquery-ui.js"> </script>
+	<!--CSS-->
+	<link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
 
-        <script src="arborescence.js"></script>
-        
-        <script src="main.js"></script>
 
-        <title> TITLE </title>    
-    </head>
+<!--jQuery-->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jqueryui/ui/jquery-ui.js"></script>
 
-    <!--
-        mettre un lieu de traitement.
-        on drop, move garbage to lieu.
-        then move to finalité
-    -->
+<!--jQuery UI-->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+
+<!--D3-->
+<script src="./js/d3.min.js"></script>
+
+<!--Serious Game-->
+<script src="./js/arborescence.js"></script>
+<script src="./js/main.js"></script>
+</head>
+
+<body>
+	
+    <div id="pagewrap">
     
-    <body>
-        <div class="game">
-            <div class="playground">
-                <div class="depots">
-                    <div data-type="grise"></div>
-                    <div data-type="decheterie"></div>
-                    <div data-type="bac"></div>
-                    <div data-type="compost"></div>
+        <!--Grid System-->
+        <div class="grid"></div>
+		
+        <!--Header-->
+        <header>
+            <div class="header-content">
+                <div id="site-logo" class="inline">
+                    <h1 class="left">Tetritus</h1>
+                    <h2 class="left">Que deviennent nos déchets en Gironde ?</h2>
                 </div>
-                <div class="animation-area">
-                    <div class="lieu-de-traitement" data-type="decheterie"></div>
-                    <div class="lieu-de-traitement" data-type="bac"></div>
-                    <div class="lieu-de-traitement" data-type="compost"></div>
-                </div>
-                <div class="finalites">
-                    <div class="lieu-de-traitement" data-type="incineration"></div>
-                    <div class="lieu-de-traitement" data-type="enfouissement"></div>
-                    <div data-type="valoration-matiere"></div>
-                    <div data-type="valoration-biologique"></div>
-                </div>
+                <nav class="inline">
+                    <a href="#" class="animation">À propos</a>
+                    <a href="#" class="animation">Contact</a>
+                    <a href="#" class="facebook social animation"></a>
+                    <a href="#" class="twitter social animation no-margin"></a>
+                </nav>
             </div>
-
-            <ul class="dechets">
-                <li> <div class="dechet" data-type="banane"></div>
-                <li> <div class="dechet" data-type="polystyrène"></div>
-                <li> <div class="dechet" data-type="bocal"></div>
-                <li> <div class="dechet" data-type="shampooing"></div>
-                <li> <div class="dechet" data-type="brique-lait"></div>
-                <li> <div class="dechet" data-type="conserve"></div>
-                <li> <div class="dechet" data-type="chaise"></div>
-                <li> <div class="dechet" data-type="aerosol"></div>
-                <li> <div class="dechet" data-type="gravat"></div>
-                <li> <div class="dechet" data-type="journal"></div>
-                <li> <div class="dechet" data-type="matelas"></div>
-                <li> <div class="dechet" data-type="sapin"></div>
-                <li> <div class="dechet" data-type="sommier"></div>
-                <li> <div class="dechet" data-type="piles"></div>
-            </ul>
+        </header>
+    	
+        <div class="explication">
+            <p class="intro">Détritus est un mini-jeu à visée informative sur la gestion des déchets.</br>
+            En Gironde, environ 900 000 tonnes de déchets sont collectées chaque année. 57% sont éliminés, tandis que 43% sont recyclés. Mais ce n’est pas encore assez pour le département. Aiderez-vous le Conseil Général à améliorer son taux de valorisation des déchets ?</p>
+            <p class="intro">Ci-contre figurent différents objets que vous pourriez être amenés à jeter. Mais dans quelle poubelle ? Faites-le test pour le savoir.</p>
+            <button class="how animation">Comment jouer ?</button>
+            <p class="how-text">La vie d’un détritus est loin de s’arrêter à la poubelle. Il s’agit plutôt de la commencer. Centre d’enfouissement, incinération, recyclage, compostage… chacun a une finalité appropriée en fonction de sa nature. Testez avec ces objets du quotidien les différents points de collecte. Mais attention ! Certains choix permettent une meilleure valorisation ou élimination que d’autres.</p>
         </div>
 
+        <!--Game-->
+            <div class="game">
+                <div class="playground">
+                    <div class="depots">
+                        <div data-type="grise"></div>
+                        <div data-type="decheterie"></div>
+                        <div data-type="bac"></div>
+                        <div data-type="compost"></div>
+                    </div>
+                    <div class="animation-area">
+                        <div class="lieu-de-traitement" data-type="decheterie"></div>
+                        <div class="lieu-de-traitement" data-type="bac"></div>
+                        <div class="lieu-de-traitement" data-type="compost"></div>
+                    </div>
+                    <div class="finalites">
+                        <div class="lieu-de-traitement" data-type="incineration"></div>
+                        <div class="lieu-de-traitement" data-type="enfouissement"></div>
+                        <div data-type="valoration-matiere"></div>
+                        <div data-type="valoration-biologique"></div>
+                    </div>
+                </div>
+    
+                <ul class="dechets">
+                    <li><div class="dechet" data-type="banane"></div></li>
+                    <li><div class="dechet" data-type="polystyrène"></div></li>
+                    <li><div class="dechet" data-type="bocal"></div></li>
+                    <li><div class="dechet" data-type="shampooing"></div></li>
+                    <li><div class="dechet" data-type="brique-lait"></div></li>
+                    <li><div class="dechet" data-type="conserve"></div></li>
+                    <li><div class="dechet" data-type="chaise"></div></li>
+                    <li><div class="dechet" data-type="aerosol"></div></li>
+                    <li><div class="dechet" data-type="gravat"></div></li>
+                    <li><div class="dechet" data-type="journal"></div></li>
+                    <li><div class="dechet" data-type="matelas"></div></li>
+                    <li><div class="dechet" data-type="sapin"></div></li>
+                    <li><div class="dechet" data-type="sommier"></div></li>
+                    <li><div class="dechet" data-type="piles"></div></li>
+                </ul>
+            </div>
+            <!--Infobulle-->
+            <div class="infobulle ib-grise">
+            	<h2>Poubelle grise</h2>
+                <p>Point de collecte des ordures ménagères : reste de repas, pots de yaourts, emballages plastiques légers (boite à œufs, sur-emballages bouteilles d’eau…), produits d’hygiène (coton, mouchoirs, couches), verres et assiettes cassées.</p>
+            </div>
+            <div class="infobulle ib-tri">
+            	<h2>Bac de tri</h2>
+            	<p>Dans cette catégorie sont inclus les différentes collectes sélectives : poubelle pour les déchets recyclables des particuliers (plastique, aluminium, acier, papier), container à verre… </p>
+            </div>
+            <div class="infobulle ib-compost">
+            	<h2>Tri compost</h2>
+            	<p>Ce tri est à destination des déchets verts (taille d’arbres, feuilles, branches) et/ou des biodéchets (ordures putrescibles des particuliers : restes de repas et autres). Dans le Médoc et le Libournais, un ramassage au porte à porte permet de les collecter. Les déchets verts sont recueillis en déchèterie.
+</p>
+            </div>
+            <div class="infobulle ib-incineration">
+            	<h2>Incinération</h2>
+            	<p>Destruction des déchets par combustion la plus complète possible. L’opération produit des mâchefers, sorte de boulettes enfouis ou utilisées pour la construction des routes et des REFIOM, des résidus d’épuration des fumées d’usine. Ceux-ci sont considéré comme des déchets dangereux et enfouis. 
+</p>
+            </div>
+            <div class="infobulle ib-enfouissement">
+            	<h2>Enfouissement</h2>
+            	<p>Espace libre dégagé dans le sol qui permet de stocker les déchets qui ne peuvent pas être traités autrement. Ils sont rendus étanches par d’immenses membranes où sont déversés les détritus. En Gironde, on récupère, avec un système de tubes, le méthane produit par la décomposition des ordures et on l’utilise comme source énergétique.
+</p>
+            </div>
+            <div class="infobulle ib-matiere">
+            	<h2>Valorisation matière</h2>
+            	<p>C’est le but à atteindre le plus souvent possible : le recyclage ou le début d’une seconde vie pour les déchets. Il a deux avantages majeurs : réduire les déchets, la pollution qu’ils pourraient causer et préserver les ressources naturelles. 
+</p>
+            </div>
+            <div class="infobulle ib-biologique">
+            	<h2>Valorisation biologique</h2>
+            	<p>Le département fait composter les déchets verts (feuilles, tailles de jardin) et biodéchets (restes de repas). Le produit obtenu est vérifié : extraction des objet non-décomposés et analyse de sa composition. Il sera par la suite vendu aux professionnels et particuliers.
+</p>
+            </div>
+            <div class="infobulle ib-particulier">
+            	<h2>Traitement particulier</h2>
+            	<p>C’est la voie suivie par certains déchets considérés comme dangereux pour l’environnement. Elle permet d’avoir un traitement adapté : décontaminer un objet, en enlever la substance dangereuse et recycler les parties qui peuvent l’être. 
+</p>
+            </div>
+        </div>
+        
+        <!--Datas-->
+        <div class="data-container arrow">
+        	<p>￼Toute la poubelle grise est soit incinérée, 172 kg, soit enfouie, 82 kg en fonction des modes de traitement mis en place chez vous. Une proportion d’environ 70% contre 30%.</p>
+        	<div class="numbers"></div>
+            <div class="data-chart"></div>
+        </div>
+        
+        <!--Try again-->
+        <div class="try-again">
+        	<button class="animation">Retourner dans ma poubelle</button>
+        </div>
+        
+        <!--Objectives-->
+        <div class="obs-container">
+        	<p>Le traitement de nos déchets entre dans les compétences des conseils généraux. Les objectifs de la Gironde :</p>
+            <ul>
+            	<li>Recycler plus pour éliminer moins</li>
+                <li>Eviter les erreurs de tri</li>
+                <li>Limiter la production de déchets</li>
+            </ul>
+        	<div class="obs-chart"></div>
+        	<div class="filters"></div>
+            
+        </div>
 
+        <!--Footer-->
+        <footer>
+            <p>Copyright 2014 - ECV / IJBA</br>
+            Les données collectées et chiffrées sont la propriété exclusive du Conseil Général de la Gironde.</br>
+            Réalisé avec <a href="http://d3js.org/" class="animated_link" target="_blank">D3.js</a></p>
+        </footer>
+        
+    </div>
+    	
+</body>
 
-
-    </body>
 </html>

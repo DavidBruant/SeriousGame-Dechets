@@ -1,0 +1,113 @@
+/*GAME
+==================*/
+.game{
+    display: flex;
+	margin: 0 auto 58px auto;
+	width: 1260px;
+	height: 1030px;
+}
+
+.game .playground{
+    flex: 3;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+.depots{
+    flex: 1;
+    background-color: hsl(23, 72%, 87%);
+}
+.animation-area{
+    flex: 3;
+    background-color: hsl(223, 72%, 87%);
+
+    position: relative;
+}
+.finalites{
+    flex: 1;
+    background-color: hsl(156, 72%, 87%);
+}
+
+/* .depots */
+.depots{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.depots > *{
+    background-image: url("http://www.poubelles.biz/poubelles.jpg");
+    width: 100px;
+    height: 100px;
+}
+
+/* .animation-area */
+.animation-area .lieu-de-traitement{
+    position: absolute;
+    background-image: url("http://static.ladepeche.fr/content/media/image/zoom/2012/03/21/201203211974.jpg");
+    width: 100px;
+    height: 100px;
+}
+
+.animation-area .lieu-de-traitement[data-type="decheterie"]{
+    top: 30%;
+    left: 40%;
+}
+.animation-area .lieu-de-traitement[data-type="bac"]{
+    top: 30%;
+    left: 60%;
+}
+.animation-area .lieu-de-traitement[data-type="compost"]{
+    top: 30%;
+    left: 80%;
+}
+
+.finalites {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.finalites div {
+    background-image: url("http://pngimg.com/upload/star_PNG1580.png");
+    width: 100px;
+    height: 100px;
+}
+
+
+.game .dechets{
+    flex: 1;
+    background-color: hsl(123, 72%, 87%);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.dechets li {
+    border: 1px solid #AAA;
+    width: 100%;
+}
+
+
+.dechet{
+    background-image: url("http://2.bp.blogspot.com/_Nbg2O3YY3s8/TAoiRyh-K_I/AAAAAAAAmdQ/sYZMY5Jn9N4/s1600/recycling_1.jpeg");
+
+    width: 50px;
+    height: 50px;
+}
+
+.dechet[data-type]:after{
+    content: attr(data-type);
+}
+.lieu-de-traitement[data-type]:after{
+    content: attr(data-type);
+}
+.depots > *[data-type]:after{
+    content: attr(data-type);
+}
+.finalites > *[data-type]:after{
+    content: attr(data-type);
+}
+
