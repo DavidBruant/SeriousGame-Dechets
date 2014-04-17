@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
     "use strict";
 
+    var PAUSE_DELAY = 300;
+    var ANIMATION_TIME = 700;
+    
 	var gameOffset = $('.game').offset();
 
     $('.dechet').draggable();
@@ -27,16 +30,16 @@ document.addEventListener('DOMContentLoaded', function(){
             var scenario = scenarios[typeDechet][typePoubelle];
 
 
-            console.log(typeDechet, typePoubelle, scenario, defaultScenario);
+            //console.log(typeDechet, typePoubelle, scenario, defaultScenario);
 
             /*
             @dechet element on screen to move around
             @dest string or array
             */
             function goTo(dechet, dest){
-
                 var remainder;
-
+                var clone;
+                
                 if(Array.isArray(dest)){
                     var tmp = dest.shift();
                     remainder = dest;
@@ -45,14 +48,16 @@ document.addEventListener('DOMContentLoaded', function(){
                 // dest is now a single destination (string)
 
 
-                if(dest === destinations.feuEtTerre){
-                    console.log('TODO DUPLICATION!');
-                    dest = "incineration"; // temp rewrite
-                }
-                
-                if(dest === destinations.terreEtMatiere){
-                    console.log('TODO DUPLICATION bis!');
-                    dest = "enfouissement"; // temp rewrite
+                if(dest === destinations.feuEtTerre || dest === destinations.terreEtMatiere){
+                    console.log('yo');
+                    var dests = dest.split('+');
+                    dest = dests[0];
+                    
+                    clone = $(dechet).clone().appendTo('.game');
+                    goTo(clone, dests[1]);
+                    setTimeout(function(){
+                        clone.remove();
+                    }, ANIMATION_TIME + PAUSE_DELAY)
                 }
 
 
@@ -69,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 dechet.animate({
                     top: pos.top,
                     left: pos.left
-                }, function(){
+                }, ANIMATION_TIME, function(){
                     setTimeout(function(){
                         if(remainder.length === 1 && (remainder[0] === destinations.good || remainder[0] === destinations.bad)){
                             setTimeout(function(){
@@ -90,12 +95,11 @@ document.addEventListener('DOMContentLoaded', function(){
                         else
                             goTo(dechet, remainder);
 
-                    }, 300);
+                    }, PAUSE_DELAY);
                 });
             }
-            console.log('typePoubelle', typePoubelle, scenario || defaultScenario)
-            var path = [typePoubelle === 'grise' ? destinations.feuEtTerre : typePoubelle].concat(scenario || defaultScenario);
-            console.log('path', path);
+            
+            var path = (typePoubelle === 'grise' ? [] : [typePoubelle]).concat(scenario || defaultScenario);
             goTo(dechet, path);
         }
     });
