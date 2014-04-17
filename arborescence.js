@@ -72,7 +72,7 @@
         "chaise": { 
             "grise" : [D.feuEtTerre, D.bad],
             "decheterie" : D.matiere,
-            "bac": [D.decheterie, D.good],
+            "bac": [D.decheterie, D.matiere, D.good],
             "compost": D.feuEtTerre
         },
 

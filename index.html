@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/XXXXXX.css">
 
         <style> 
             *{
@@ -44,117 +43,7 @@
             
         </style>
 
-        <style>
-            .game{
-                display: flex;
-            }
-
-            .game .playground{
-                flex: 3;
-                height: 100vh;
-                
-                display: flex;
-                flex-direction: column;
-            }
-            .depots{
-                flex: 1;
-                background-color: hsl(23, 72%, 87%);
-            }
-            .animation-area{
-                flex: 3;
-                background-color: hsl(223, 72%, 87%);
-                
-                position: relative;
-            }
-            .finalites{
-                flex: 1;
-                background-color: hsl(156, 72%, 87%);
-            }
-            
-            /* .depots */
-            .depots{
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-            }
-            
-            .depots > *{
-                background-image: url("http://www.poubelles.biz/poubelles.jpg");
-                width: 100px;
-                height: 100px;
-            }
-            
-            /* .animation-area */
-            .animation-area .lieu-de-traitement{
-                position: absolute;
-                background-image: url("http://static.ladepeche.fr/content/media/image/zoom/2012/03/21/201203211974.jpg");
-                width: 100px;
-                height: 100px;
-            }
-            
-            .animation-area .lieu-de-traitement[data-type="decheterie"]{
-                top: 30%;
-                left: 40%;
-            }
-            .animation-area .lieu-de-traitement[data-type="bac"]{
-                top: 30%;
-                left: 60%;
-            }
-            .animation-area .lieu-de-traitement[data-type="compost"]{
-                top: 30%;
-                left: 80%;
-            }
-            
-            .finalites {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-            }
-            .finalites div {
-                background-image: url("http://pngimg.com/upload/star_PNG1580.png");
-                width: 100px;
-                height: 100px;
-            }
-            
-
-            .game .dechets{
-                flex: 1;
-                background-color: hsl(123, 72%, 87%);
-                height: 100vh;
-                
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-            }
-            .dechets li {
-                border: 1px solid #AAA;
-                width: 100%;
-            }
-            
-            
-            .dechet{
-                background-image: url("http://2.bp.blogspot.com/_Nbg2O3YY3s8/TAoiRyh-K_I/AAAAAAAAmdQ/sYZMY5Jn9N4/s1600/recycling_1.jpeg");
-                
-                width: 50px;
-                height: 50px;
-            }
-            
-            .dechet[data-type]:after{
-                content: attr(data-type);
-            }
-            .lieu-de-traitement[data-type]:after{
-                content: attr(data-type);
-            }
-            .depots > *[data-type]:after{
-                content: attr(data-type);
-            }
-            .finalites > *[data-type]:after{
-                content: attr(data-type);
-            }
-
-
-        </style>
+        <link href="main.css" rel="stylesheet">
 
 
         <script src="bower_components/jquery/dist/jquery.js"> </script>
@@ -162,90 +51,7 @@
 
         <script src="arborescence.js"></script>
         
-        <script>
-            document.addEventListener('DOMContentLoaded', function(){
-                "use strict";
-
-                $('.dechet').draggable();
-                $('.depots > *').droppable({
-                    accept: ".dechet",
-                    drop: function(e, ui){
-                        var dechet = ui.draggable;
-                        var poubelle = this;
-                        
-                        //console.log('dechet', dechet);
-                        var typeDechet = $(dechet).attr('data-type');
-                        var typePoubelle = poubelle.getAttribute('data-type');
-                        
-                        // 'cause hmm... yeah.. CSS.. whatever...
-                        dechet.css({ 
-                            position: 'absolute',
-                            top: dechet.offset().top,
-                            left: dechet.offset().left,
-                        })
-                        
-                        var nextPos;
-                        
-                        var defaultScenario = scenarios['default'][typePoubelle];
-                        var scenario = scenarios[typeDechet][typePoubelle];
-                        
-                        
-                        console.log(typeDechet, typePoubelle, scenario, defaultScenario);
-                        
-                        /*
-                        @dechet element on screen to move around
-                        @dest string or array
-                        */
-                        function goTo(dechet, dest){
-                            
-                            var remainder;
-                            
-                            if(Array.isArray(dest)){
-                                var tmp = dest.shift();
-                                remainder = dest;
-                                dest = tmp;
-                            }
-                            // dest is now a single destination (string)
-                            
-                            
-                            if(dest === destinations.feuEtTerre){
-                                console.log('TODO DUPLICATION!');
-                                dest = "incineration"; // temp rewrite
-                            }
-                            
-                            
-                            if(!Array.isArray(remainder) || remainder.length === 0){
-                                remainder = [destinations.good];
-                            }
-                            
-                            var direction = $('.lieu-de-traitement[data-type="'+dest+'"]'); // test if redirection first
-                            if(direction.length === 0)
-                                direction = $('.finalites > *[data-type="'+dest+'"]');
-                            
-                            var pos = $(direction).offset();
-
-                            dechet.animate({
-                                top: pos.top,
-                                left: pos.left
-                            }, function(){
-                                setTimeout(function(){
-                                    if(remainder.length === 1 && (remainder[0] === destinations.good || remainder[0] === destinations.bad)){
-                                        console.log(String(remainder[0]));
-                                    }
-                                    else
-                                        goTo(dechet, remainder);
-                                        
-                                }, 300);
-                            });
-                        }
-                        console.log('typePoubelle', typePoubelle, scenario || defaultScenario)
-                        var path = [typePoubelle === 'grise' ? destinations.feuEtTerre : typePoubelle].concat(scenario || defaultScenario);
-                        console.log('path', path);
-                        goTo(dechet, path);
-                    }
-                });
-            });
-        </script>
+        <script src="main.js"></script>
 
         <title> TITLE </title>    
     </head>
