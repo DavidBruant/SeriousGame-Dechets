@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 	var gameOffset = $('.game').offset();
 
-    $('.dechet').draggable({ delay: 0 });
+    $('.dechet').draggable();
     $('.depots > *').droppable({
         accept: ".dechet",
         drop: function(e, ui){
@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
             var typeDechet = $(dechet).attr('data-type');
             var typePoubelle = poubelle.getAttribute('data-type');
 
-			console.log(dechet.offset())
             // 'cause hmm... yeah.. CSS.. whatever...
-			
             dechet.css({ 
                 position: 'absolute',
                 top: dechet.offset().top,
@@ -51,6 +49,11 @@ document.addEventListener('DOMContentLoaded', function(){
                     console.log('TODO DUPLICATION!');
                     dest = "incineration"; // temp rewrite
                 }
+                
+                if(dest === destinations.terreEtMatiere){
+                    console.log('TODO DUPLICATION bis!');
+                    dest = "enfouissement"; // temp rewrite
+                }
 
 
                 if(!Array.isArray(remainder) || remainder.length === 0){
@@ -69,7 +72,20 @@ document.addEventListener('DOMContentLoaded', function(){
                 }, function(){
                     setTimeout(function(){
                         if(remainder.length === 1 && (remainder[0] === destinations.good || remainder[0] === destinations.bad)){
-                            console.log(String(remainder[0]));
+                            setTimeout(function(){
+                                if(remainder[0] === destinations.good){
+                                    $(dechet).fadeOut();
+                                    $(dechet).parent().remove();
+                                }
+                                else{ // bad
+                                    $(dechet).css({
+                                        position: 'relative',
+                                        top: 0,
+                                        left: 0
+                                    });
+                                    $(dechet).draggable();
+                                }
+                            })
                         }
                         else
                             goTo(dechet, remainder);
