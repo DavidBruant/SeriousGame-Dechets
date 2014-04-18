@@ -2,7 +2,7 @@
 ==================*/
 .game{
     display: flex;
-	margin: 0 auto 58px auto;
+	margin: 0 auto 20px auto;
 	width: 1260px;
 	height: 1030px;
 }
@@ -10,23 +10,23 @@
 .game .playground{
     flex: 3;
     height: 100vh;
-
+    margin: 0 20px 0 0;
     display: flex;
     flex-direction: column;
 }
 .depots{
     flex: 1;
-    background-color: hsl(23, 72%, 87%);
+    background-color: transparent;
 }
 .animation-area{
     flex: 3;
-    background-color: hsl(223, 72%, 87%);
+    background-color: transparent;
 
     position: relative;
 }
 .finalites{
     flex: 1;
-    background-color: hsl(156, 72%, 87%);
+    background-color: transparent;
 }
 
 /* .depots */
@@ -37,34 +37,56 @@
 }
 
 .depots > *{
-    background-image: url("http://www.poubelles.biz/poubelles.jpg");
-    width: 100px;
-    height: 100px;
+    width: 220px;
+    height: 220px;
+    padding: 180px 0 0 0;
+}
+
+.depots [data-type="grise"] {
+    background: url(../svg/collecte/poubelle_grise.svg) 50% 50% no-repeat;
+}
+
+.depots [data-type="decheterie"] {
+    background: url(../svg/collecte/decheterie.svg) 50% 50% no-repeat;
+}
+
+.depots [data-type="bac"] {
+    background: url(../svg/collecte/bac_tri.svg) 50% 50% no-repeat;
+}
+
+.depots [data-type="compost"] {
+    background: url(../svg/collecte/tri_compost.svg) 50% 50% no-repeat;
 }
 
 /* .animation-area */
 .animation-area .lieu-de-traitement{
     position: absolute;
-    background-image: url("http://static.ladepeche.fr/content/media/image/zoom/2012/03/21/201203211974.jpg");
-    width: 100px;
-    height: 100px;
+    width: 220px;
+    height: 220px;
+    padding: 180px 0 0 0;
 }
 
 .animation-area .lieu-de-traitement[data-type="decheterie"]{
-    top: 30%;
-    left: 40%;
+    top: 56%;
+    left: 80px;
+    background: url(../svg/centre_tri/centre_decheterie.svg) 111% -285% no-repeat;
 }
+
 .animation-area .lieu-de-traitement[data-type="bac"]{
-    top: 30%;
-    left: 60%;
+    top: 56%;
+    left: 360px;
+    background: url(../svg/centre_tri/centre_bac_tri.svg) 111% -285% no-repeat;
 }
 .animation-area .lieu-de-traitement[data-type="compost"]{
-    top: 30%;
-    left: 80%;
+    top: 56%;
+    left: 640px;
+    background: url(../svg/centre_tri/centre_tri_compost.svg) 111% -248% no-repeat;
 }
+
 .animation-area .lieu-de-traitement[data-type="particulier"]{
-    top: 20%;
-    left: 10%;
+    top: 7%;
+    left: 406px;
+    background: url(../svg/centre_tri/traitement_particulier.svg) -255% -147% no-repeat;
 }
 
 .finalites {
@@ -72,46 +94,131 @@
     justify-content: space-around;
     align-items: center;
 }
-.finalites div {
-    background-image: url("http://pngimg.com/upload/star_PNG1580.png");
-    width: 100px;
-    height: 100px;
+.finalites .item {
+    width: 220px;
+    height: 260px;
+    padding: 232px 0 0 0;
+}
+
+.finalites .lieu-de-traitement[data-type="incineration"]{
+    background: url(../svg/finalites/incineration_off.svg) -205% 45% no-repeat;
+}
+
+.finalites .lieu-de-traitement[data-type="enfouissement"]{
+    background: url(../svg/finalites/enfouissement_off.svg) -205% 45% no-repeat;
+}
+
+.item[data-type="valoration-matiere"]{
+    background: url(../svg/finalites/valo_matiere_off.svg) -205% 45% no-repeat;
+}
+
+.item[data-type="valoration-biologique"]{
+    background: url(../svg/finalites/valo_bio_off.svg) -205% 45% no-repeat;
 }
 
 
 .game .dechets{
     flex: 1;
-    background-color: hsl(123, 72%, 87%);
+    background-color: #fff;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-.dechets li {
-    border: 1px solid #AAA;
-    width: 100%;
+    text-decoration: none;
+    list-style: none;
+    list-style-image: none;
 }
 
+.dechets li {
+    border: 1px solid #b7bdc2;
+    width: 100%;
+    height: 115px;
+    padding: 7px 26px;
+    border-radius: 4px;
+        -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+                -o-border-radius: 4px;
+}
+
+.dechets li p {
+    font-size: 20px;
+    margin: 12px 0;
+}
+
+.dechets .menu-title {
+    font-size: 24px;
+    color: #fff;
+    background: #f1c40f;
+    padding: 28px 26px;
+    border: none;
+}
 
 .dechet{
-    background-image: url("http://2.bp.blogspot.com/_Nbg2O3YY3s8/TAoiRyh-K_I/AAAAAAAAmdQ/sYZMY5Jn9N4/s1600/recycling_1.jpeg");
-
-    width: 50px;
+    width: 60px;
     height: 50px;
+    margin: 0 15px 0 0;
+    float: left;
+    cursor: move;
 }
 
-.dechet[data-type]:after{
-    content: attr(data-type);
-}
-.lieu-de-traitement[data-type]:after{
-    content: attr(data-type);
-}
-.depots > *[data-type]:after{
-    content: attr(data-type);
-}
-.finalites > *[data-type]:after{
-    content: attr(data-type);
+.dechet[data-type="banane"]{
+    background: url(../svg/dechets/banane.svg) 50% 128% no-repeat;
 }
 
+.dechet[data-type="polystyrène"]{
+    background: url(../svg/dechets/barquette_polystyrene.svg) 50% 128% no-repeat;
+}
+
+.dechet[data-type="bocal"]{
+    background: url(../svg/dechets/bocal_verre.svg) 50% 128% no-repeat;
+}
+
+.dechet[data-type="shampooing"]{
+    background: url(../svg/dechets/bouteille_shampoing.svg) 50% 117% no-repeat;
+}
+
+.dechet[data-type="brique-lait"]{
+    background: url(../svg/dechets/brique_lait.svg) 50% 97% no-repeat;
+}
+
+.dechet[data-type="conserve"]{
+    background: url(../svg/dechets/conserve.svg) 50% 115% no-repeat;
+}
+
+.dechet[data-type="chaise"]{
+    background: url(../svg/dechets/chaise.svg) 50% 104% no-repeat;
+}
+
+.dechet[data-type="aerosol"]{
+    background: url(../svg/dechets/deo.svg) 50% 100% no-repeat;
+}
+
+.dechet[data-type="gravat"]{
+    background: url(../svg/dechets/gravat.svg) 50% 138% no-repeat;
+}
+
+.dechet[data-type="journal"]{
+    background: url(../svg/dechets/journal.svg) 50% 123% no-repeat;
+}
+
+.dechet[data-type="matelas"]{
+    background: url(../svg/dechets/matelas.svg) 50% 128% no-repeat;
+}
+
+.dechet[data-type="sapin"]{
+    background: url(../svg/dechets/sapin.svg) 50% 72% no-repeat;
+}
+
+.dechet[data-type="sommier"]{
+    background: url(../svg/dechets/sommier.svg) 50% 128% no-repeat;
+}
+
+.dechet[data-type="piles"]{
+    background: url(../svg/dechets/pile.svg) 50% 155% no-repeat;
+}
+
+.caption {
+    text-align: center;
+    font-size: 20px;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <style> 
+            *{
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+
+                box-sizing: border-box;
+                    
+                border-collapse: collapse;
+            }
+            
+            html, body{
+                padding: 0;
+                margin: 0;
+            }
+
+            /* For non-documents */
+            ul, ol, menu{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            li{
+                margin: 0;
+                padding: 0;
+            }
+            
+            .table-layout{
+                display: table;
+            }
+            .table-layout > *{
+                display: table-row;
+            }
+            .table-layout > * > *{
+                display: table-cell;
+            }
+            
+        </style>
+
+        <link href="main.css" rel="stylesheet">
+
+
+        <script src="bower_components/jquery/dist/jquery.js"> </script>
+        <script src="bower_components/jqueryui/ui/jquery-ui.js"> </script>
+
+        <script src="arborescence.js"></script>
+        
+        <script src="main.js"></script>
+
+        <title> TITLE </title>    
+    </head>
+
+    <!--
+        mettre un lieu de traitement.
+        on drop, move garbage to lieu.
+        then move to finalité
+    -->
+    
+    <body>
+        <div class="game">
+            <div class="playground">
+                <div class="depots">
+                    <div data-type="grise"></div>
+                    <div data-type="decheterie"></div>
+                    <div data-type="bac"></div>
+                    <div data-type="compost"></div>
+                </div>
+                <div class="animation-area">
+                    <div class="lieu-de-traitement" data-type="decheterie"></div>
+                    <div class="lieu-de-traitement" data-type="bac"></div>
+                    <div class="lieu-de-traitement" data-type="compost"></div>
+                </div>
+                <div class="finalites">
+                    <div class="lieu-de-traitement" data-type="incineration"></div>
+                    <div class="lieu-de-traitement" data-type="enfouissement"></div>
+                    <div data-type="valoration-matiere"></div>
+                    <div data-type="valoration-biologique"></div>
+                </div>
+            </div>
+
+            <ul class="dechets">
+                <li> <div class="dechet" data-type="banane"></div>
+                <li> <div class="dechet" data-type="polystyrène"></div>
+                <li> <div class="dechet" data-type="bocal"></div>
+                <li> <div class="dechet" data-type="shampooing"></div>
+                <li> <div class="dechet" data-type="brique-lait"></div>
+                <li> <div class="dechet" data-type="conserve"></div>
+                <li> <div class="dechet" data-type="chaise"></div>
+                <li> <div class="dechet" data-type="aerosol"></div>
+                <li> <div class="dechet" data-type="gravat"></div>
+                <li> <div class="dechet" data-type="journal"></div>
+                <li> <div class="dechet" data-type="matelas"></div>
+                <li> <div class="dechet" data-type="sapin"></div>
+                <li> <div class="dechet" data-type="sommier"></div>
+                <li> <div class="dechet" data-type="piles"></div>
+            </ul>
+        </div>
+
+
+
+
+    </body>
+</html>

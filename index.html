@@ -50,6 +50,9 @@
             
         </style>
 
+	<!--Fav Icon-->
+	<link rel="shortcut icon" href="#" />
+	<!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="#" /><![endif]-->
 
 
 	<!--CSS-->
@@ -57,20 +60,19 @@
     <link rel="stylesheet" type="text/css" media="all" href="css/main.css" />
 
 
-<!--jQuery-->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/jqueryui/ui/jquery-ui.js"></script>
+    <!--jQuery-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 
-<!--jQuery UI-->
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+    <!--jQuery UI-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
 
-<!--D3-->
-<script src="./js/d3.min.js"></script>
+    <!--D3-->
+    <script src="./js/d3.min.js"></script>
 
-<!--Serious Game-->
-<script src="./js/arborescence.js"></script>
-<script src="./js/main.js"></script>
-</head>
+    <!--Serious Game-->
+    <script src="./js/arborescence.js"></script>
+    <script src="./js/main.js"></script>
+    </head>
 
 <body>
 	
@@ -105,95 +107,163 @@
 
         <!--Game-->
             <div class="game">
+
                 <div class="playground">
                     <div class="depots">
-                        <div data-type="grise"></div>
-                        <div data-type="decheterie"></div>
-                        <div data-type="bac"></div>
-                        <div data-type="compost"></div>
+                        <div class="item" data-type="grise">
+                        	<div class="infobulle ib-setting-1">
+            					<h2>Poubelle grise</h2>
+                				<p>Point de collecte des ordures ménagères : reste de repas, pots de yaourts, emballages plastiques légers (boite à œufs, sur-emballages bouteilles d’eau…), produits d’hygiène (coton, mouchoirs, couches), verres et assiettes cassées.</p>
+            				</div>
+                            <p class="caption">Poubelle grise</p>
+                        </div>
+                        <div class="item" data-type="decheterie">
+                            <div class="infobulle ib-setting-1">
+                                <h2 class="no-margin">Déchèterie</h2>
+                            </div>
+                            <p class="caption">Déchèterie</p>
+                        </div>
+                        <div class="item" data-type="bac">
+                            <div class="infobulle ib-setting-1">
+                                <h2>Bac de tri</h2>
+                                <p>Dans cette catégorie sont inclus les différentes collectes sélectives : poubelle pour les déchets recyclables des particuliers (plastique, aluminium, acier, papier), container à verre…</p>
+                            </div>
+                            <p class="caption">Bac de tri</p>
+                        </div>
+                        <div class="item" data-type="compost">
+                            <div class="infobulle ib-setting-1">
+                                <h2>Tri compost</h2>
+                                <p>Ce tri est à destination des déchets verts (taille d’arbres, feuilles, branches) et/ou des biodéchets (ordures putrescibles des particuliers : restes de repas et autres). Dans le Médoc et le Libournais, un ramassage au porte à porte permet de les collecter. Les déchets verts sont recueillis en déchèterie.</p>
+
+                            </div>
+                            <p class="caption">Tri compost</p>
+                        </div>
                     </div>
                     <div class="animation-area">
-                        <div class="lieu-de-traitement" data-type="decheterie"></div>
-                        <div class="lieu-de-traitement" data-type="bac"></div>
-                        <div class="lieu-de-traitement" data-type="compost"></div>
-                        <div class="lieu-de-traitement" data-type="particulier"></div>
+                        <div class="item lieu-de-traitement" data-type="decheterie">
+                            <div class="infobulle ib-setting-2">
+                                <h2 class="no-margin">Centre de tri</h2>
+                            </div>
+                        </div>
+                        <div class="item lieu-de-traitement" data-type="bac">
+                            <div class="infobulle ib-setting-2">
+                                <h2 class="no-margin">Centre de tri</h2>
+                            </div>
+                        </div>
+                        <div class="item lieu-de-traitement" data-type="compost">
+                            <div class="infobulle ib-setting-2">
+                                <h2 class="no-margin">Centre de tri</h2>
+                            </div>
+                        </div>
+                        <div class="lieu-de-traitement item" data-type="particulier">
+                            <div class="infobulle ib-setting-3">
+                                <h2>Traitement particulier</h2>
+                                <p>C’est la voie suivie par certains déchets considérés comme dangereux pour l’environnement. Elle permet d’avoir un traitement adapté : décontaminer un objet, en enlever la substance dangereuse et recycler les parties qui peuvent l’être. </p>
+                             </div>
+                        </div>
                     </div>
                     <div class="finalites">
-                        <div class="lieu-de-traitement" data-type="incineration"></div>
-                        <div class="lieu-de-traitement" data-type="enfouissement"></div>
-                        <div data-type="valoration-matiere"></div>
-                        <div data-type="valoration-biologique"></div>
+                        <div class="lieu-de-traitement item" data-type="incineration">
+                            <div class="infobulle ib-setting-4">
+                                <h2>Incinération</h2>
+                                <p>Destruction des déchets par combustion la plus complète possible. L’opération produit des mâchefers, sorte de boulettes enfouis ou utilisées pour la construction des routes et des REFIOM, des résidus d’épuration des fumées d’usine. Ceux-ci sont considéré comme des déchets dangereux et enfouis.</p>
+                            </div>
+                        </div>
+                        <div class="lieu-de-traitement item" data-type="enfouissement">
+                            <div class="infobulle ib-setting-4">
+                                <h2>Enfouissement</h2>
+                                <p>Espace libre dégagé dans le sol qui permet de stocker les déchets qui ne peuvent pas être traités autrement. Ils sont rendus étanches par d’immenses membranes où sont déversés les détritus. En Gironde, on récupère, avec un système de tubes, le méthane produit par la décomposition des ordures et on l’utilise comme source énergétique.</p>
+                            </div>
+                        </div>
+                        <div class="item" data-type="valoration-matiere">
+                            <div class="infobulle ib-setting-4">
+                                <h2>Valorisation matière</h2>
+                                <p>C’est le but à atteindre le plus souvent possible : le recyclage ou le début d’une seconde vie pour les déchets. Il a deux avantages majeurs : réduire les déchets, la pollution qu’ils pourraient causer et préserver les ressources naturelles.</p>
+                            </div>
+                        </div>
+                        <div class="item" data-type="valoration-biologique">
+                            <div class="infobulle ib-setting-4">
+                                <h2>Valorisation biologique</h2>
+                                <p>Le département fait composter les déchets verts (feuilles, tailles de jardin) et biodéchets (restes de repas). Le produit obtenu est vérifié : extraction des objet non-décomposés et analyse de sa composition. Il sera par la suite vendu aux professionnels et particuliers.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
     
                 <ul class="dechets">
-                    <li><div class="dechet" data-type="banane"></div></li>
-                    <li><div class="dechet" data-type="polystyrène"></div></li>
-                    <li><div class="dechet" data-type="bocal"></div></li>
-                    <li><div class="dechet" data-type="shampooing"></div></li>
-                    <li><div class="dechet" data-type="brique-lait"></div></li>
-                    <li><div class="dechet" data-type="conserve"></div></li>
-                    <li><div class="dechet" data-type="chaise"></div></li>
-                    <li><div class="dechet" data-type="aerosol"></div></li>
-                    <li><div class="dechet" data-type="gravat"></div></li>
-                    <li><div class="dechet" data-type="journal"></div></li>
-                    <li><div class="dechet" data-type="matelas"></div></li>
-                    <li><div class="dechet" data-type="sapin"></div></li>
-                    <li><div class="dechet" data-type="sommier"></div></li>
-                    <li><div class="dechet" data-type="piles"></div></li>
+                    <li class="menu-title">Dans ma poubelle</li>
+                    <li>
+                        <div class="dechet" data-type="banane"></div>
+                        <p>Banane</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="polystyrène"></div>
+                        <p>Polystryrène</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="bocal"></div>
+                        <p>Bocal en verre</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="shampooing"></div>
+                        <p>Shampooing</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="brique-lait"></div>
+                        <p>Brique de lait</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="conserve"></div>
+                        <p>Conserve</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="chaise"></div>
+                        <p>Chaise en bois</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="aerosol"></div>
+                        <p>Aérosol</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="gravat"></div>
+                        <p>Gravats</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="journal"></div>
+                        <p>Magazine & journaux</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="matelas"></div>
+                        <p>Matelas</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="sapin"></div>
+                        <p>Sapin</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="sommier"></div>
+                        <p>Sommier</p>
+                    </li>
+                    <li>
+                        <div class="dechet" data-type="piles"></div>
+                        <p>Piles</p>
+                    </li>
                 </ul>
+
             </div>
-            <!--Infobulle-->
-            <div class="infobulle ib-grise">
-            	<h2>Poubelle grise</h2>
-                <p>Point de collecte des ordures ménagères : reste de repas, pots de yaourts, emballages plastiques légers (boite à œufs, sur-emballages bouteilles d’eau…), produits d’hygiène (coton, mouchoirs, couches), verres et assiettes cassées.</p>
-            </div>
-            <div class="infobulle ib-tri">
-            	<h2>Bac de tri</h2>
-            	<p>Dans cette catégorie sont inclus les différentes collectes sélectives : poubelle pour les déchets recyclables des particuliers (plastique, aluminium, acier, papier), container à verre… </p>
-            </div>
-            <div class="infobulle ib-compost">
-            	<h2>Tri compost</h2>
-            	<p>Ce tri est à destination des déchets verts (taille d’arbres, feuilles, branches) et/ou des biodéchets (ordures putrescibles des particuliers : restes de repas et autres). Dans le Médoc et le Libournais, un ramassage au porte à porte permet de les collecter. Les déchets verts sont recueillis en déchèterie.
-</p>
-            </div>
-            <div class="infobulle ib-incineration">
-            	<h2>Incinération</h2>
-            	<p>Destruction des déchets par combustion la plus complète possible. L’opération produit des mâchefers, sorte de boulettes enfouis ou utilisées pour la construction des routes et des REFIOM, des résidus d’épuration des fumées d’usine. Ceux-ci sont considéré comme des déchets dangereux et enfouis. 
-</p>
-            </div>
-            <div class="infobulle ib-enfouissement">
-            	<h2>Enfouissement</h2>
-            	<p>Espace libre dégagé dans le sol qui permet de stocker les déchets qui ne peuvent pas être traités autrement. Ils sont rendus étanches par d’immenses membranes où sont déversés les détritus. En Gironde, on récupère, avec un système de tubes, le méthane produit par la décomposition des ordures et on l’utilise comme source énergétique.
-</p>
-            </div>
-            <div class="infobulle ib-matiere">
-            	<h2>Valorisation matière</h2>
-            	<p>C’est le but à atteindre le plus souvent possible : le recyclage ou le début d’une seconde vie pour les déchets. Il a deux avantages majeurs : réduire les déchets, la pollution qu’ils pourraient causer et préserver les ressources naturelles. 
-</p>
-            </div>
-            <div class="infobulle ib-biologique">
-            	<h2>Valorisation biologique</h2>
-            	<p>Le département fait composter les déchets verts (feuilles, tailles de jardin) et biodéchets (restes de repas). Le produit obtenu est vérifié : extraction des objet non-décomposés et analyse de sa composition. Il sera par la suite vendu aux professionnels et particuliers.
-</p>
-            </div>
-            <div class="infobulle ib-particulier">
-            	<h2>Traitement particulier</h2>
-            	<p>C’est la voie suivie par certains déchets considérés comme dangereux pour l’environnement. Elle permet d’avoir un traitement adapté : décontaminer un objet, en enlever la substance dangereuse et recycler les parties qui peuvent l’être. 
-</p>
-            </div>
+
         </div>
         
         <!--Datas-->
         <div class="data-container arrow">
-        	<p>￼Toute la poubelle grise est soit incinérée, 172 kg, soit enfouie, 82 kg en fonction des modes de traitement mis en place chez vous. Une proportion d’environ 70% contre 30%.</p>
+        	<p>Toute la poubelle grise est soit incinérée, 172 kg, soit enfouie, 82 kg en fonction des modes de traitement mis en place chez vous. Une proportion d’environ 70% contre 30%.</p>
         	<div class="numbers"></div>
             <div class="data-chart"></div>
         </div>
         
         <!--Try again-->
         <div class="try-again">
-        	<button class="animation">Retourner dans ma poubelle</button>
+        	<button class="animation back">Retourner dans ma poubelle</button>
         </div>
         
         <!--Objectives-->
@@ -206,7 +276,6 @@
             </ul>
         	<div class="obs-chart"></div>
         	<div class="filters"></div>
-            
         </div>
 
         <!--Footer-->
@@ -219,5 +288,21 @@
     </div>
     	
 </body>
+
+<script>
+$(function(){
+    $('.how').click(function() {
+        $('.how-text').addClass('bounceInDown');
+        $('.how').css({background: '#ff5f44', color: '#fff', cursor: 'auto'});
+    });
+});
+</script>
+<script>
+$(function(){
+    $('.back').click(function() {
+        $('html,body').animate({scrollTop: 500}, 250);
+    });
+});
+</script>
 
 </html>

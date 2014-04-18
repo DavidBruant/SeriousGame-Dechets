@@ -207,14 +207,21 @@ blockquote {
 	text-shadow: none;
 }
 
-*, *:after, *:before {
+.social:before, .infobulle:before, .animated_link:before, .arrow:before, .arrow:after, .try-again button:before {
 	-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 			box-sizing: border-box;
-	/*transition: all 0.25s ease-in-out;
+	transition: all 0.25s ease-in-out;
 		-webkit-transition: all 0.25s ease-in-out;
 			-o-transition: all 0.25s ease-in-out;
-				-moz-transition: all 0.25s ease-in-out;*/ /* wtf */
+				-moz-transition: all 0.25s ease-in-out;
+}
+
+.animation {
+	transition: all 0.25s ease-in-out;
+		-webkit-transition: all 0.25s ease-in-out;
+			-o-transition: all 0.25s ease-in-out;
+				-moz-transition: all 0.25s ease-in-out;
 }
 
 .right {
@@ -242,13 +249,6 @@ blockquote {
 	display: none;
 }
 
-.animation {
-	transition: all 0.25s ease-in-out;
-		-webkit-transition: all 0.25s ease-in-out;
-			-o-transition: all 0.25s ease-in-out;
-				-moz-transition: all 0.25s ease-in-out;
-}
-
 .grid {
 	width: 100%;
 	height: 100%;
@@ -266,6 +266,137 @@ blockquote {
 
 #pagewrap {
 	width: 100%;
+}
+
+/*Entrance*/
+@-webkit-keyframes bounceInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(0px);
+	}
+	
+	60% {
+		opacity: 1;
+		-webkit-transform: translateY(30px);
+	}
+	
+	80% {
+		-webkit-transform: translateY(-10px);
+	}
+	
+	100% {
+		-webkit-transform: translateY(0);
+	}
+}
+
+@-moz-keyframes bounceInDown {
+	0% {
+		opacity: 0;
+		-moz-transform: translateY(0px);
+	}
+	
+	60% {
+		opacity: 1;
+		-moz-transform: translateY(30px);
+	}
+	
+	80% {
+		-moz-transform: translateY(-10px);
+	}
+	
+	100% {
+		-moz-transform: translateY(0);
+	}
+}
+
+@-o-keyframes bounceInDown {
+	0% {
+		opacity: 0;
+		-o-transform: translateY(0px);
+	}
+	
+	60% {
+		opacity: 1;
+		-o-transform: translateY(30px);
+	}
+	
+	80% {
+		-o-transform: translateY(-10px);
+	}
+	
+	100% {
+		-o-transform: translateY(0);
+	}
+}
+
+@keyframes bounceInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+	
+	60% {
+		opacity: 1;
+		transform: translateY(30px);
+	}
+	
+	80% {
+		transform: translateY(-10px);
+	}
+	
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@-ms-keyframes bounceInDown {
+	0% {
+		opacity: 0;
+		-ms-transform: translateY(0);
+	}
+	
+	60% {
+		opacity: 1;
+		-ms-transform: translateY(30px);
+	}
+	
+	80% {
+		-ms-transform: translateY(-10px);
+	}
+	
+	100% {
+		-ms-transform: translateY(0);
+	}
+}
+
+.bounceInDown {
+	display: block !important;
+	-webkit-animation-name: bounceInDown;
+		-moz-animation-name: bounceInDown;
+			-o-animation-name: bounceInDown;
+				animation-name: bounceInDown;
+					-ms-animation-name: bounceInDown;
+}
+
+.how-text {
+	display: none;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-iteration-count: none
+    	-o-animation-duration: 0.5s;
+    	-o-animation-delay: 0s;
+    	-o-animation-iteration-count: none
+    		-moz-animation-duration: 0.5s;
+    		-moz-animation-delay: 0s;
+    		-moz-animation-iteration-count: none
+  				animation-duration: 0.5s;
+    			animation-delay: 0s;
+    			animation-iteration-count: none
+					    -webkit-animation-fill-mode: none;
+					    -moz-animation-fill-mode: none;
+						-o-animation-fill-mode: none;
+						animation-fill-mode: none;
+						-ms-animation-fill-mode: none;
 }
 
 
@@ -291,14 +422,14 @@ header {
 #site-logo {
 	width: 540px;
 	height: inherit;
-	margin: 0 180px 0 0;
+	margin: 0 176px 0 0;
 	background: transparent;
 	padding: 30px 0;
 }
 
 /*Main nav*/
 nav {
-	width: 536px;
+	width: 540px;
 	height: inherit;
 	padding: 66px 0;
 }
@@ -307,7 +438,7 @@ nav a {
 	padding: 22px 40px;
 	color: #000;
 	background: #bdc3c7;
-	margin: 0 38px 0 0;
+	margin: 0 36px 0 0;
 	font-size: 18px;
 	position: relative;
 	text-decoration: none;
@@ -338,19 +469,23 @@ nav a:hover {
 }
 
 .twitter {
-	padding: 22px 17px;
+	padding: 22px 20px;
 }
 
 .twitter:before {
 	content:'\f309';
 }
 
-.facebook:before {
-	content:'\f30c';
-}
-
 .twitter:hover {
 	background: #55acee;
+}
+
+.facebook {
+	padding: 22px 21px;
+}
+
+.facebook:before {
+	content:'\f30c';
 }
 
 .facebook:hover {
@@ -374,7 +509,7 @@ nav a:hover {
 	cursor: pointer;
 	height: 60px;
 	width: 220px;
-	margin: 25px 0 0 0;
+	margin: 25px 0 15px 0;
 	background: #f1c40f;
 	font: normal 20px 'AmaranthRegular', Arial, Helvetica, sans-serif;
 	border: none;
@@ -382,7 +517,6 @@ nav a:hover {
 		-moz-border-radius: 4px;
 			-webkit-border-radius: 4px;
 				-o-border-radius: 4px;
-
 }
 
 .explication button:hover {
@@ -400,11 +534,14 @@ nav a:hover {
 .infobulle {
 	width: 300px;
 	position: absolute;
-	top: 0;
-	display: none;
-	right: 50px;
+	z-index:900;
+	visibility: hidden;
 	padding: 30px;
 	background: #f1c40f;
+	transition: all 0.1s ease-in-out;
+		-webkit-transition: all 0.1s ease-in-out;
+			-o-transition: all 0.1s ease-in-out;
+				-moz-transition: all 0.1s ease-in-out;
 	border-radius: 4px;
 		-moz-border-radius: 4px;
 			-webkit-border-radius: 4px;
@@ -427,9 +564,54 @@ nav a:hover {
 	border-top: 15px solid #f1c40f;
 	transform: rotate(90deg);
 		-moz-transform: rotate(90deg);
-			-webkit-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+		transition: all 0.01s ease-in-out;
+		-webkit-transition: all 0.01s ease-in-out;
+			-o-transition: all 0.01s ease-in-out;
+				-moz-transition: all 0.01s ease-in-out;
 }
 
+.item {
+	position: relative;
+}
+
+.item:hover .ib-setting-1, .item:hover .ib-setting-2 {
+	display: block;
+	right: -320px;
+	visibility: visible;
+}
+
+.item:hover .ib-setting-3 {
+	display: block;
+	right: -210px;
+	visibility: visible;
+}
+
+.item:hover .ib-setting-4 {
+	display: block;
+	right: -240px;
+	visibility: visible;
+}
+
+.ib-setting-1 {
+	top: 65px;
+	right: -340px;
+}
+
+.ib-setting-2 {
+	top: 15px;
+	right: -350px;
+}
+
+.ib-setting-3 {
+	top: 90px;
+	right: -230px;
+}
+
+.ib-setting-4 {
+	top: 65px;
+	right: -260px;
+}
 
 
 /*DATAS
@@ -449,7 +631,6 @@ nav a:hover {
 .data-container p {
 	margin: 0 0 20px 0;
 }
-	
 
 .arrow:before {
 	content: '';
@@ -527,12 +708,13 @@ nav a:hover {
 	content:'\2b06';
 	color: #000;
 	position: absolute;
-	top: 10%;
+	top: -5px;
+	vertical-align: middle;
 	left: -20px;
 }
 
 .try-again button:hover:before {
-	top: 10%;
+	top:-5px;
 	left: 12px;
 }
 
